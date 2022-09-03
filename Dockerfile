@@ -9,8 +9,15 @@ apt-get update && apt-get install -y yarn
 RUN apt-get update -qq && apt-get install -y nodejs yarn
 RUN mkdir /myapp
 WORKDIR /myapp
+
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
+
+ENV BUNDLER_VERSION 2.2.33
+RUN gem update --system \
+    && gem install bundler -v $BUNDLER_VERSION \
+    && bundle install -j 4
+    
 RUN bundle install
 COPY . /myapp
 
