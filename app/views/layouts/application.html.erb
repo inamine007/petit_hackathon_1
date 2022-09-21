@@ -11,7 +11,12 @@
   </head>
 
   <body>
-    <h1>Hello,inakoya</h1>
+    <div>
+      <% flash.each do |key, value| %>
+        <div><%= value %></div>
+      <% end %>
+    </div>
+
     <%= yield %>
   </body>
 </html>
