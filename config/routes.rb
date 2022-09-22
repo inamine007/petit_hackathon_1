@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'comments/create'
+  get 'comments/destroy'
   get '/signup', to: 'users#new'
   resources :users    # usersテーブルに登録したユーザーのページ
 
