@@ -1,2 +1,33 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<h3>画像詳細ページ</h3>
+<p>
+    <%= @post.title %>
+</p>
+<p>
+    <%= image_tag @post.image.url, size: '300x300' %>
+</p>
+
+<div class="modal-content">
+    <div class="modal-body">
+    <%= form_with(model:[@post, @comment], method: :post) do |f| %>
+        <%= f.text_area :comment, placeholder: "コメント…"  %>
+    </div>
+        <%= f.hidden_field :post_id, :value => @post.id %>
+        <%# <%= f.hidden_field :user_id, :value => current_user.id%>
+    </div>
+    <div class="modal-footer">
+        <%= f.submit "コメントする", class: 'btn btn-primary' %>
+    <% end %>
+    </div>
+</div>
+
+<h3>コメント一覧</h3>
+<table>
+    <div class="comment-index">
+    <% @post.comments.each do |comment| %>
+        <tr>
+            <td><%= comment.user.name %></td>
+            <td><%= comment.comment %></td>
+        </tr>
+    <% end %>
+    </div>
+</table>
