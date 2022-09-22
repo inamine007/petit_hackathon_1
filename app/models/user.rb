@@ -10,5 +10,7 @@ class User < ApplicationRecord
                                     # dbのカラムに、password_digestを追加すると使用できるようになる。
     validates :password, presence: true, length: { minimum: 6 }
                                     
-                                
+    has_many :posts, dependent: :destroy
+    has_many :comments, dependent: :destroy
+    has_many :favorites, dependent: :destroy                           
 end
