@@ -1,2 +1,12 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h3>投稿写真一覧</h3>
+
+<div class="post-container">
+    <% @posts.each do |post| %>
+    <div class="post-title">
+        <%= post.title %>
+    </div>
+    <div class="post-image">
+        <%= image_tag post.image.url, size: '300x300' %>
+    </div>
+    <% end %>
+</div>
