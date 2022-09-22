@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'posts/show'
+  get 'posts/index'
   get 'comments/create'
   get 'comments/destroy'
   get '/signup', to: 'users#new'
