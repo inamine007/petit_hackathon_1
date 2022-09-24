@@ -1,4 +1,8 @@
-class User < ApplicationRecord
+class User < ApplicationRecord                                    
+    has_many :posts, dependent: :destroy
+    has_many :comments, dependent: :destroy
+    has_many :favorites, dependent: :destroy   
+
     before_save { self.email = email.downcase }  #アドレスの大文字小文字は区別しない。そのため、保存の前に、小文字に変換してから保存。
     validates :name, presence: true, length: { maximum: 50 }
 
@@ -9,8 +13,11 @@ class User < ApplicationRecord
                                     # passwordと、password_confirmationが使えるようになる。
                                     # dbのカラムに、password_digestを追加すると使用できるようになる。
     validates :password, presence: true, length: { minimum: 6 }
-                                    
-    has_many :posts, dependent: :destroy
-    has_many :comments, dependent: :destroy
-    has_many :favorites, dependent: :destroy                           
+    
+                            # 渡された文字列のハッシュ値を返す
+    def User.digest(string)
+        cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                    BCrypt::Engine.cost
+        BCrypt::Password.create(string, cost: cost)
+    end
 end

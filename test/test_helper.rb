@@ -9,5 +9,9 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
+  def is_logged_in?       # => session_helperのlogged_in?と同じ意味。テストユーザーをテストする用。　＝＞　テストから、ヘルパーメソッドを呼び出せないため。
+    !session[:user_id].nil?
+  end
+
   # Add more helper methods to be used by all tests here...
 end
