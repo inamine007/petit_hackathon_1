@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'favorites/create'
+  get 'favorites/destroy'
   get 'posts/show'
   get 'posts/index'
   get 'comments/create'

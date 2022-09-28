@@ -8,5 +8,19 @@
     <div class="post-image">
         <%= image_tag post.image.url, size: '300x300' %>
     </div>
+    
+    <div id="favorite_btn_<%= post.id %>">
+        <%= render 'favorites/favorite', post: post %>
+    </div>
     <% end %>
 </div>
+
+<%# js使えてるかのテスト
+「テスト」ではなく「成功」と表示されてればjs動いてる
+
+<p>テスト</p>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("p").text("成功！！");
+    });
+</script> %>
