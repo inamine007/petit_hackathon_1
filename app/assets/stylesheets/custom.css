@@ -1,0 +1,9 @@
+.favorite_btn {
+    text-decoration: none;
+    color: red;
+}
+
+.post-image img {
+    height: 300px;
+    width: auto;
+}
