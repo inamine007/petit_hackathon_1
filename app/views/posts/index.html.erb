@@ -1,9 +1,13 @@
-<h3>投稿写真一覧</h3>
+<h3>投稿一覧</h3>
 
 <div class="post-container">
+<%= paginate @posts %>
     <% @posts.each do |post| %>
+    <div>
+        <%= post.user.name %>
+    </div>
     <div class="post-title">
-        <%= post.title %>
+        <%= link_to post.title, post %>
     </div>
     <div class="post-image">
         <%= image_tag post.image.url %>
@@ -11,7 +15,9 @@
     
     <div id="favorite_btn_<%= post.id %>">
         <%= render 'favorites/favorite', post: post %>
+        <%= link_to (image_tag post.image.url, size: '300x300'), post %>
     </div>
+    <div>投稿日: <<%= post.created_at.to_date %>></div>
     <% end %>
 </div>
 
@@ -24,3 +30,5 @@
         $("p").text("成功！！");
     });
 </script> %>
+    <%= paginate @posts %>
+</div>
