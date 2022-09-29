@@ -23,10 +23,13 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave'
 gem 'bootstrap'
+gem 'kaminari'
+# gem 'will_paginate',           '3.3.1'
+# gem 'bootstrap-will_paginate', '1.0.0'
 gem 'rails-i18n'
 gem 'rails-controller-testing' # => testでassert_templateが使えるようになる
 gem 'byebug'
-
+gem 'pry-byebug'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

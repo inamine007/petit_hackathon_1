@@ -1,4 +1,31 @@
-<h1>
-    <div><%= @user.name%></div>
-    <div><%= @user.email%></div>
-</h1>
+<div class='mypage'>
+    <div class="side">
+        <h1 class='side_profile'>
+            <div><%= @user.name%></div>
+            <div><%= @user.email%></div>
+        </h1>
+        <div class='side_form'>
+            <%= render 'posts/post_form'%>
+        </div>
+    </div>
+    <div class='posts'>
+        <h2>投稿</h2>
+        <% if @user.posts.any? %>
+            <p>
+                <%= @user.posts.count %>件の投稿
+            </p>
+            <%= paginate @posts %>
+            <% @posts.each do |post|%>
+                <h3 class="post_title"><%= link_to post.title, post %></h3>
+                <li><%= link_to image_tag(post.image_url, size: '300x300'), post %></li>
+                <li>投稿日: <<%= post.created_at.to_date %>></li>
+                <li>
+                    <%# if current_user.post? %>
+                        <%= link_to "削除", post, method: :delete, data: { confirm: "本当に消しますか？"}%>
+                    <%# end %>
+                </li>
+            <% end %>
+            <%= paginate @posts %>
+        <% end %>
+    </div>
+</div>

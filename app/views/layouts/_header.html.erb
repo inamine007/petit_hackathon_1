@@ -1,9 +1,10 @@
 <head>
     <ul>
-        <li><%= link_to "ホーム", "#"%></li>
-        <li><%= link_to "投稿一覧", "#"%></li>
+        <li><%= link_to "ホーム", "#" %></li>
+        <li><%= link_to "投稿一覧", posts_path%></li>
         <% if logged_in? %>
             <li><%= link_to "マイページ", current_user %></li>
+            <li><%= "#{current_user.name}でログイン中"%></li>
             <li><%= link_to "ログアウト", logout_path, method: :delete %></li> 
         <% else %>
             <li><%= link_to "新規登録", signup_path %></li>
