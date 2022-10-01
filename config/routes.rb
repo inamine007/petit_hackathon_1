@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'comments/destroy'
   get '/signup', to: 'users#new'
 
-  root to: 'sessions#new'
+  root to: 'posts#index'
   # get 'pages/top'
   get '/signup', to: 'users#new'  # => このルーティング要る？
 
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   # 画像とコメント、お気に入りを紐づけるルーティング
   resources :posts do
     resources :comments, only: [:create]
-    # resource :favorites, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
   end
 
 end
