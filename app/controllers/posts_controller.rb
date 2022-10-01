@@ -7,7 +7,7 @@ class PostsController < ApplicationController
       flash[:sucess] = "投稿しました！"
       redirect_to current_user
     else
-      render 'users/show'
+      render 'show'
     end
   end
 
@@ -22,7 +22,6 @@ class PostsController < ApplicationController
 
   def destroy
     @post = current_user.posts.find_by(id: params[:id])
-    byebug
     @post.destroy
     flash[:sucess] = "投稿を削除しました！！"
     redirect_to request.referer || root_url

@@ -3,21 +3,21 @@
 <div class="post-container">
 <%= paginate @posts %>
     <% @posts.each do |post| %>
-    <div>
-        <%= post.user.name %>
-    </div>
-    <div class="post-title">
-        <%= link_to post.title, post %>
-    </div>
-    <div class="post-image">
-        <%= image_tag post.image.url %>
-    </div>
-    
-    <div id="favorite_btn_<%= post.id %>">
-        <%= render 'favorites/favorite', post: post %>
-        <%= link_to (image_tag post.image.url, size: '300x300'), post %>
-    </div>
-    <div>投稿日: <<%= post.created_at.to_date %>></div>
+        <div>
+            <%= post.user.name %>
+        </div>
+        <div class="post-title">
+            <%= link_to post.title, post %>
+        </div>
+        <div class="post-image">
+            <%= link_to (image_tag post.image.url), post %>
+        </div>
+        <div>投稿日: <<%= post.created_at.to_date %>></div>
+            <% if logged_in? %>  <%# => ログインしているuserじゃないと、favoriteが表示できないエラーになる!! %>
+                <div id="favorite_btn_<%= post.id %>">
+                    <%= render 'favorites/favorite', post: post %>
+                </div>
+            <% end %>
     <% end %>
 </div>
 
