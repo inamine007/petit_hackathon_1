@@ -20,12 +20,11 @@ class UsersController < ApplicationController
     @post = current_user.posts.build
     # @posts = current_user.posts.page(params[:page]).per(1)
     @posts = @user.posts.page(params[:page]).per(10)
-    # binding.pry
   end
 end
 
   private
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation).per(3)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 

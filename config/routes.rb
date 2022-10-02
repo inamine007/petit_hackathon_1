@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'comments/destroy'
   get '/signup', to: 'users#new'
 
-  root to: 'sessions#new'
+  root to: 'posts#index'
   # get 'pages/top'
   get '/signup', to: 'users#new'  # => このルーティング要る？
 

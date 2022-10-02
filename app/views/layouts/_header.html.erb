@@ -1,14 +1,21 @@
-<head>
-    <ul>
-        <li><%= link_to "ホーム", "#" %></li>
-        <li><%= link_to "投稿一覧", posts_path%></li>
-        <% if logged_in? %>
-            <li><%= link_to "マイページ", current_user %></li>
-            <li><%= "#{current_user.name}でログイン中"%></li>
-            <li><%= link_to "ログアウト", logout_path, method: :delete %></li> 
-        <% else %>
-            <li><%= link_to "新規登録", signup_path %></li>
-            <li><%= link_to "ログイン", login_path %></li>   
-        <% end %>
-    </ul>
-</head> 
+
+<header class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <div class="navbar-brand">
+            <%= link_to "ホーム", posts_path, class: "nav-link" %>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><%= link_to "投稿一覧", posts_path, class: "nav-link" %></li>
+                <% if logged_in? %>
+                    <li class="nav-item"><%= link_to "マイページ", current_user, class: "nav-link" %></li>
+                    <li class="nav-item nav-link"><%= "#{current_user.name}でログイン中"%></li>
+                    <li class="nav-item"><%= link_to "ログアウト", logout_path, method: :delete, class: "nav-link" %></li> 
+                <% else %>
+                    <li class="nav-item"><%= link_to "新規登録", signup_path, class: "nav-link" %></li>
+                    <li class="nav-item"><%= link_to "ログイン", login_path, class: "nav-link" %></li>   
+                <% end %>
+            </ul>
+        </div>
+    </div>
+</header>

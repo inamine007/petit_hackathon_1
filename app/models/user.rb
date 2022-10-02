@@ -1,7 +1,7 @@
 class User < ApplicationRecord                                    
     has_many :posts, dependent: :destroy
     has_many :comments, dependent: :destroy
-    has_many :favorites, dependent: :destroy 
+    has_many :favorites, dependent: :destroy   
 
     before_save { self.email = email.downcase }  #アドレスの大文字小文字は区別しない。そのため、保存の前に、小文字に変換してから保存。
     validates :name, presence: true, length: { maximum: 50 }
