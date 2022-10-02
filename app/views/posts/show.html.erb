@@ -1,10 +1,12 @@
 <h3>画像詳細ページ</h3>
-<p>
-    <%= @post.title %>
-</p>
-<p>
-    <%= image_tag @post.image.url, size: '300x300' %>
-</p>
+<div class="modal-header">
+    <div class="image-title">
+        <span>画像タイトル：</span><%= @post.title %>
+    </div>
+    <div class="show-image">
+        <%= image_tag @post.image.url, size: '300x300'%>
+    </div>
+</div>
 
 <div class="modal-content">
     <div class="modal-body">
@@ -27,6 +29,7 @@
         <tr>
             <td><%= comment.user.name %></td>
             <td><%= comment.comment %></td>
+            <td><%= button_to '削除する', post_comment_path(@post, comment), data: {confirm: "削除してよろしいですか？"}, method: :delete %></td>
         </tr>
     <% end %>
     </div>

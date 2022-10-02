@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   def create
-    @post = Post.find(params[:post_id])
+    @post = Post.all
     comment = current_user.comments.new(comment_params)
     comment.user_id = current_user.id
     comment.save
@@ -8,6 +8,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      redirect_to post_path(@post)
+    else
+      flash.now[:alert] = 'コメント削除に失敗しました'
+      render post_path(@post)
+    end
   end
 
   private
