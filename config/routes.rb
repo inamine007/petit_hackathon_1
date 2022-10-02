@@ -21,8 +21,8 @@ Rails.application.routes.draw do
 
   # 画像とコメント、お気に入りを紐づけるルーティング
   resources :posts do
-    resources :comments, only: [:create]
-    # resource :favorites, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
   end
 
 end
